@@ -10,12 +10,12 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "api-sachin9890.c9users.io"
+host: "demo-node-api.herokuapp.com"
 basePath: "/"
 schemes:
 - "https"
 paths:
-  /user:
+  /user/list:
     get:
       tags:
       - "Users"
