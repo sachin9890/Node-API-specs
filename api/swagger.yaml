@@ -1,0 +1,189 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a swagger API created for USERS."
+  version: "1.0.0"
+  title: "Swagger API"
+  termsOfService: "http://helloreverb.com/terms/"
+  contact:
+    name: "Sachin Ghumnar"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "api-sachin9890.c9users.io"
+basePath: "/"
+schemes:
+- "https"
+paths:
+  /user:
+    get:
+      tags:
+      - "Users"
+      summary: "Shows all user list"
+      description: "Multiple status values can be provided with comma seperated strings"
+      produces:
+      - "application/json"
+      - "application/xml"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /user/login:
+    post:
+      tags:
+      - "Login"
+      summary: "Login new user"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Login object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Login"
+      responses:
+        405:
+          description: "Invalid input"
+      x-swagger-router-controller: "Pet"    
+  /user/signup:
+    post:
+      tags:
+      - "SignUp"
+      summary: "Create new user"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Add signup object with string value, you will get same object as response"
+        required: true
+        schema:
+          $ref: "#/definitions/SignUp"
+      responses:
+        405:
+          description: "Invalid input"
+      x-swagger-router-controller: "Pet"        
+  /user/editProfile:
+    put:
+      tags:
+      - "EditProfile"
+      summary: "Edit user profile"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Please provide valid username to modify user records"
+        required: true
+        schema:
+          $ref: "#/definitions/SignUp"
+      responses:
+        405:
+          description: "Invalid input"
+      x-swagger-router-controller: "Pet"            
+  /user/changePassword:
+    put:
+      tags:
+      - "ChangePassword"
+      summary: "Change user password"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "You can change password by using username."
+        required: true
+        schema:
+          $ref: "#/definitions/ChangePassword"
+      responses:
+        405:
+          description: "Invalid input"
+      x-swagger-router-controller: "Pet"            
+  /user/deleteUser:
+    delete:
+      tags:
+      - "deleteUser"
+      summary: "Delete user"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Detete user by _id"
+        required: true
+        schema:
+          $ref: "#/definitions/deleteUser"
+      responses:
+        405:
+          description: "Invalid input"
+      x-swagger-router-controller: "Pet"                
+definitions:
+  Login:
+    type: "object"
+    required:
+    - "username"
+    - "password"
+    properties:
+      username:
+        type: "string"
+      password:
+         type: "string"
+  SignUp:
+    type: "object"
+    required:
+    - "username"
+    - "firstName"
+    - "lastName"
+    - "email"
+    - "password"
+    - "gender"
+    - "phone"
+    properties:
+      username:
+        type: "string"
+      firstName:
+         type: "string"
+      lastName:
+         type: "string"
+      email:
+         type: "string"
+      password:
+         type: "string"                
+      gender:
+         type: "string"
+      phone:
+         type: "string"   
+  ChangePassword:
+    type: "object"
+    required:
+    - "username"
+    - "password"
+    properties:
+      username:
+        type: "string"
+      password:
+         type: "string"  
+  deleteUser:
+    type: "object"
+    required:
+    - "id"
+    properties:
+      id:
+         type: "string"         
